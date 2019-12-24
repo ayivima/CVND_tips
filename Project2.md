@@ -26,7 +26,7 @@ The DecoderRNN receives the important features of an image and generates words t
 
 ##### We identify three important layers:
 
-+ The Embedding Layer: Language is complex. And, it becomes necessary that we make the model's work easier. The first step to making the work easier is to help it understand the relationships between words. So that if it identifies a ski it must know that it has something to do with snow. If it identifies a bowl, it must know that it has something to do with food. This is
++ The Embedding Layer: Language is complex. And, it becomes necessary that we make the model's work easier. The first step to making the work easier is to help it understand the relationships between words. So that if it identifies a `ski` it must know that it has something to do with `snow`. If it identifies a `bowl`, it must know that it has something to do with `food`. This is
 what makes the embedding layer important. It lets the model get relationships between words.
 
 + LSTM layer: The LSTM layer(s) will do the actual word predictions. During training or a forward pass, it must receive as input, a combination of the image features and the captions which have been passed through the embedding layer. The way we combine the image features and the embedding of captions, is to concatenate them...literally. Example of concatenations: 
@@ -36,6 +36,14 @@ what makes the embedding layer important. It lets the model get relationships be
 
 ##### The Forward Function
 
-+ We will retrieve the captions, making sure to remove all fullstops. Then we will pass the captions through the embedding layer.
++ Retrieve the captions, making sure to remove all fullstops. Then we will pass the captions through the embedding layer.
 
-+ Then we will concatenate the embedded captions and the feature vector from the EncoderCNN
++ Concatenate the embedded captions and the image feature vectors(from the EncoderCNN).
+
++ Push the concatenation of embedded captions and image feature vectors to the LSTM layer
+
++ Return the prediction(out put from the LSTM layer)
+
+Note: Note that for efficiency of operations we train on batches of images and captions at a time. This is an effiecient way as the neural network gets to use Matrix operations to save time and effort compared to performing operations one at a time.
+
+
