@@ -86,3 +86,22 @@ help too and vice versa.
 There is no fixed threshold. Generally, a low vocabulary threshold means there are more words for the model to learn from and may be better. As we grow, we are likely to get better with language because we get to know more words. In the same way, the more words the model learns, the higher the likelihood it can generate accurate captions.
 
 
+##### How long should I expect to train for the models on GPU?
+
+The image captioning captioning models take time to train. On average, colleagues have taken about 3 hours to train one epoch.
+The time will vary with different parameters like batch size. Generally, expect to train in excess of 8 hours for 3 epochs and above.
+
+##### What is the hidden_size?
+
+You can look at the hidden_size as the number of nodes or learnable parameters for the LSTM. 
+
+
+##### What are the states of the LSTM?
+
+Generally, an LSTM has two outputs:
+
++ Short term memory(hidden state): This is the same as previous output of the LSTM for a given sequence of words it is predicting. In simple terms, because we are predicting a sequence of words like "a sweet ice cream", when the LSTM predicts "a", it becomes the hidden state at the time it has to predict "sweet". Then, "sweet" becomes the hidden state for when it has to predict "ice". 
+
++ Long term memory(cell state): This keeps some form of memory for all the parts of the sentence predicted so far.
+Once again, given "a sweet ice cream", when the model has to predict "cream", the long term represents something that somehow points to "a sweet ice". It gives context to what the finished sentence should be.
+
