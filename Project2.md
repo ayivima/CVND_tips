@@ -9,20 +9,20 @@ In the image captioning project, we are going to use two models in tandem to des
 
 + A second model must look at the objects detected by the first model and generate words based on the relationships between them.
 
-+ The first model, which assesses images and detects important objects, is a Convolutional Neural Network(CNN). It is called `EncoderCNN`.
++ The first model, which assesses images and detects important objects, is a Convolutional Neural Network(CNN). It is called an  `Encoder`. In the project, it is specifically called `EncoderCNN`. To drive the concept further home, you may look at the function of the ENCODERCNN as transforming an image into a tensor which carries meaningful information about important objects and what they are doing.
 
-+ The second model, which is responsible for finding the right words to describe images, is a Recurrent Neural Network(RNN) - specifically a Long Short Term Memory architecture. it is called `DecoderRNN`
++ The second model, which is responsible for finding the right words to describe images, is a Recurrent Neural Network(RNN) - specifically a Long Short Term Memory architecture. It is called `DecoderRNN`. You can look at it as a decoder, which takes the encoded tensor from the ENCODERCNN and then decodes it by reading what the important objects are doing in the image. Then, ultimately, it tells us what the objects are doing, in a form that can be easily converted into words.
 
 
 ### The EncoderCNN
 
 + Because of the complexity of this project, it is recommended that a pretrained model is used for the `EncoderCNN`. While you may be able to build your own model, it will take time and a lot of trial and error. A pre-trained model like `Resnets` and `VGGs` will save a lot of headache and help achieve good accuracy pretty quickly.
 
-+ We do not need the EncoderCNN to classiy images, we only need it to extract the features of important objects. Therefore, we do not need a `softmax`, we only need a linear layer without activation, which will transform the size of feature vector to a size that is expected by the DecoderRNN.
++ We do not need the EncoderCNN to classify images, we only need it to extract the features of (or information about) important objects. Therefore, we do not need a `softmax`, we only need a linear layer, which will transform the relevant feature information to a size that is expected by the DecoderRNN.
 
 ### The DecoderRNN
 
-The DecoderRNN receives the important features of an image and generates words to describe them.
+Once again, the DecoderRNN receives the important features of an image and generates words to describe them.
 
 ##### We identify three important layers:
 
