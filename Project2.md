@@ -44,6 +44,27 @@ what makes the embedding layer important. It lets the model get relationships be
 
 + Return the prediction(out put from the LSTM layer)
 
-Note: Note that for efficiency of operations we train on batches of images and captions at a time. This is an effiecient way as the neural network gets to use Matrix operations to save time and effort compared to performing operations one at a time.
+Note: Note that for efficiency of operations we train on batches of images and captions at a time. This is an efficient way as the neural network gets to use Matrix operations to save time and effort compared to performing operations one at a time.
 
+
+### Some FAQs
+
+###### Which batch size is good for me?
+
+There is really no fixed rule. You must experiment and find a batch size that works for your use case. That said, it is recommended that if you choose a large batch size, your learning rate must be high too. A large batch size and a low learning rate is almost certainly set for doom. If you start with a low batch size and a low learning rate, and later choose to increase the batch size,
+you should remember to adjust the learning rate appropriately especially for a big change. If you
+are increasing batch size significantly, it is more likely that an increase in learning rate will
+help too and vice versa.
+
+###### What is Perplexity?
+
+You may look at it this way. PERPLEXITY in english can mean CONFUSION. Thus, if the model has high PERPLEXITY, it is HIGHLY CONFUSED...And it will start calling "a bowl of rice" as "a man holding a frisbee in the field". Consequently, the model will give better captions if PERPLEXITY is low.
+
+###### What perplexity is best?
+
+It is recommended that your model PERPLEXITY goes beyond 10. For very good results, you should be aiming at PERPLEXITY that is lower than 6.
+
+###### The model Perplexity goes up and down. Is this normal?
+
+It is normal that you will have the PERPLEXITY go up and down, so far as the range of fluctuation keeps decreasing. If the range of fluctuations is stagnant for unusually long, thats when you might want to think of retraining and tuning your hyperparameters. For example, it could be that the learning rate is too small and the descent is getting stuck in local minima instead of the global minimum, or you might have a very high learning rate that the descent cannot settle in the minimum and keeps oscillating past it.
 
