@@ -105,3 +105,14 @@ Generally, an LSTM has two outputs:
 + Long term memory(cell state): This keeps some form of memory for all the parts of the sentence predicted so far.
 Once again, given "a sweet ice cream", when the model has to predict "cream", the long term represents something that somehow points to "a sweet ice". It gives context to what the finished sentence should be.
 
+##### Why am I having this error "TypeError: 'ellipsis' object is not callable"?
+
+Udacity provided placeholders for students to specify values of hyperparameters and other relevant variables. An example is given below:
+
+```
+batch_size = ...
+```
+You need to fill in the correct values. The error occurs because the values have not been entered.
+
+SIDE NOTE: Note that, python has a built-in `Ellipsis` which has the literal `...`. By not putting the right values in place of `...` in the notebook, python tries to apply functions on the `Ellipsis` object and this causes an error, because they cannot be applied to it.
+
