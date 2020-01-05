@@ -1,6 +1,6 @@
 # IMAGE CAPTIONING
 
-### OVERVIEW
+## OVERVIEW
 
 In the image captioning project, we are going to use two models in tandem to describe images. This is one of the interesting projects you will get to boast of. 
 
@@ -47,7 +47,27 @@ what makes the embedding layer important. It lets the model get relationships be
 Note: Note that for efficiency of operations we train on batches of images and captions at a time. This is an efficient way as the neural network gets to use Matrix operations to save time and effort compared to performing operations one at a time.
 
 
-### Some FAQs
+## KEY LESSONS TO PAY ATTENTION TO
+
+All lessons in the Advanced Computer Vision and Deep Learning module are relevant. The highlights below, however, are lessons you should not miss, unless you are already familiar with them.
+
+##### You need to understand how RNNs and LSTMS work
+
+You should pay good attention to these lessons, especially if you are new to sequence models.
+
++ Lesson 3: RNNs - It gives you an overview of how Recurrent Neural Networks work
++ Lesson 4: Long Short-Term Memory(LSTM) Networks - It provides an overview of LSTM which are an improvement on RNNs
+
+##### You need to understand the hyperparameters that are critical for training LSTMs
+
++ Lesson 5: Hyperparameters - It provides an overview of the relevance of hyperparameters and considerations to be made in tuning them
+
+##### You need to understand the Image Captioning Pipeline
+
++ Lesson 7: Image Captioning - It provides an introduction to the final Image Captioning Project.
+
+
+## SOME FAQs
 
 ##### What is Perplexity?
 
