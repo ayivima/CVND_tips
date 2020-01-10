@@ -10,3 +10,5 @@ This repository contains notes and tips on Computer Vision and the Computer Visi
 ### Computer Vision Final Project Tips
 
 + <a href="https://github.com/ayivima/CVND_tips/blob/master/Project2.md">Tips on Image Captioning Project (Project 2)</a>
+
++ <a href="https://github.com/ayivima/CVND_tips/blob/master/Project3.md">Tips on Graph SLAM Project (Project 3)</a>
