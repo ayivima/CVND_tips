@@ -36,15 +36,20 @@ what makes the embedding layer important. It lets the model get relationships be
 
 ##### The Forward Function
 
-+ Retrieve the captions, making sure to remove all fullstops. Then we will pass the captions through the embedding layer.
++ We will pass the captions through the embedding layer.
 
 + Concatenate the embedded captions and the image feature vectors(from the EncoderCNN).
 
 + Push the concatenation of embedded captions and image feature vectors to the LSTM layer
 
-+ Return the prediction(out put from the LSTM layer)
++ Return the prediction (output from the LSTM layer)
 
-Note: Note that for efficiency of operations we train on batches of images and captions at a time. This is an efficient way as the neural network gets to use Matrix operations to save time and effort compared to performing operations one at a time.
++ Adapt the caption for the embedding layer by passing it through the linear layer(s).
+
+Note: Note that for efficiency of operations, we train on a batch of images and captions at a time. This is an efficient way as the neural network gets to use Matrix operations (vectorization) to save time and effort compared to performing operations one at a time.
+
+##### The Sample Function
+
 
 
 ## KEY LESSONS TO PAY ATTENTION TO
