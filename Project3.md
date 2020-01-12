@@ -55,5 +55,18 @@ Vertical distance of landmark from robot = 2 - 5.3 = -3
 Measurement Data = [0, -1.3, -3]
 ```
 
+### Collecting Motion Data
 
+A robot moves through a certain distance to a new
+location at each time step. The new location is a point. 
+These new coordinates are obtained by adding the sum 
+of a specified distance value and noise, to the coordinates of the old location. As explained
+previously, the noise makes up for possible 
+inaccuracy in the motion measurements 
+made by the robot.
 
+![](imgs/motion1.png)
+
+In effect, for each time step, the robot estimates the
+horizontal and vertical distances it moves to be at a
+new location, with noise factored in.
