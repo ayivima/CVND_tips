@@ -70,3 +70,31 @@ made by the robot.
 In effect, for each time step, the robot estimates the
 horizontal and vertical distances it moves to be at a
 new location, with noise factored in.
+
+### Updating Omega and Xi
+
+We will update Omega(the matrix) and Xi(the vector) with landmark measurements and motion data collected as described above. 
+
+##### What will be the sizes of Omega and Xi?
+
+First, remember that Omega is a matrix, with the same number of rows and columns. Additionally, there must be a row for each of these:
+
++ X co-ordinates of robot poses
++ Y co-ordinates of robot poses
++ X co-ordinates of landmarks
++ Y co-ordinates of landmarks
+
+Consequently, the total number of rows of Omega becomes:
+`Total number of X co-ordinates of robot poses + Total number of Y co-ordinates of robot poses + Total number of X co-ordinates of landmarks + Total number of Y co-ordinates of landmarks`
+
+And, the total number of rows equals the total number of columns.
+
+How do you obtain the total number of X and Y coordinates of poses?
+
+The utmost clue is this: there can only be as many poses as the timesteps of robot motion. If the robot moved through 10 timesteps, then it had 10 positions corresponding to each of the steps in time.
+
+![](imgs/omega_xi_size.png)
+
+For Xi, there will be the same number of rows as Omega, but only one column. And, there must be a row for each of X and Y co-ordinates of poses as well as landmarks.
+
+##### Omega and Xi in code 
