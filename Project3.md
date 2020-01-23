@@ -98,3 +98,11 @@ The utmost clue is this: there can only be as many poses as the timesteps of rob
 For Xi, there will be the same number of rows as Omega, but only one column. And, there must be a row for each of X and Y co-ordinates of poses as well as landmarks.
 
 ##### Omega and Xi in code 
+
+In code, we will not have the luxury of accessing the rows and columns of Omega using `Px0`, `Lx0`, `Py0`, `Ly0` etc. Instead, we will be using indexes. 
+
+![](imgs/omega_xi_size2.png)
+
+![](imgs/omega_xi_size3.png)
+
+
