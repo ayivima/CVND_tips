@@ -1,4 +1,4 @@
-### Poses and Landmark positions
+## Poses and Landmark positions
 
 The pose is a point which represents the position or location of the robot at a given time, in 2D space. Likewise, the landmark position marks the location of a landmark in 2D space.
 
@@ -7,7 +7,7 @@ The pose is a point which represents the position or location of the robot at a 
 Poses and landmark locations are given as pairs of values, where the first value is the horizontal(x) coordinate, and the second is the vertical(y) coordinate.
 
 
-### Sensing Landmarks
+## Sensing Landmarks
 
 A importance of the sense function is to allow the robot to measure its distance from landmarks. Among several reasons in the real world, this may help the robot prevent collision.
 Thus, for the purpose of the project, when a robot senses, it measures distances of landmarks. The horizontal distance is obtained by subtracting the horizontal coordinate of the robot's current position from the horizontal coordinate of the landmark position. And, the vertical 
@@ -35,7 +35,7 @@ The measurement data, therefore, will be given as:
 [[0, -1, -3], [1, -2, -1], [2,  2, -2]]
 ```
 
-##### But there is more to it!
+#### But there is more to it!
 
 In the illustration above, we are sure of the robot's location. However, this is not the case in the real world. The robot's location can be inaccurate and we have to compensate for it.
 We do this by adding an adjustment value, called noise, to the robot's position coordinates.
@@ -55,7 +55,7 @@ Vertical distance of landmark from robot = 2 - 5.3 = -3
 Measurement Data = [0, -1.3, -3]
 ```
 
-### Collecting Motion Data
+## Collecting Motion Data
 
 A robot moves through a certain distance to a new
 location at each time step. The new location is a point. 
@@ -71,11 +71,11 @@ In effect, for each time step, the robot estimates the
 horizontal and vertical distances it moves to be at a
 new location, with noise factored in.
 
-### Updating Omega and Xi
+## Updating Omega and Xi
 
 We will update Omega(the matrix) and Xi(the vector) with landmark measurements and motion data collected as described above. 
 
-##### What will be the sizes of Omega and Xi?
+#### What will be the sizes of Omega and Xi?
 
 First, remember that Omega is a matrix, with the same number of rows and columns. Additionally, there must be a row for each of these:
 
@@ -85,19 +85,22 @@ First, remember that Omega is a matrix, with the same number of rows and columns
 + Y co-ordinates of landmarks
 
 Consequently, the total number of rows of Omega becomes:
-`Total number of X co-ordinates of robot poses + Total number of Y co-ordinates of robot poses + Total number of X co-ordinates of landmarks + Total number of Y co-ordinates of landmarks`
+```
+Total number of X co-ordinates of robot poses + Total number of Y co-ordinates of robot poses + Total number of X co-ordinates of landmarks + Total number of Y co-ordinates of landmarks
+```
+This can be further expressed as: 
+```
+(2 x total number of timesteps) + (2 x total number of landmarks)
+```
+This is based on the premise that the total number of timesteps must, logically, be the same as the total number of poses. Because, there will only be one pose(position) per timestep. Then, each landmark or pose has 2 values: one for X and another for Y.
 
-And, the total number of rows equals the total number of columns.
-
-How do you obtain the total number of X and Y coordinates of poses?
-
-The utmost clue is this: there can only be as many poses as the timesteps of robot motion. If the robot moved through 10 timesteps, then it had 10 positions corresponding to each of the steps in time.
+Finally, the total number of rows equals the total number of columns.
 
 ![](imgs/omega_xi_size.png)
 
 For Xi, there will be the same number of rows as Omega, but only one column. And, there must be a row for each of X and Y co-ordinates of poses as well as landmarks.
 
-##### Omega and Xi in code 
+#### Omega and Xi in code 
 
 In code, we will not have the luxury of accessing the rows and columns of Omega using `Px0`, `Lx0`, `Py0`, `Ly0` etc. Instead, we will be using indexes. 
 
@@ -105,4 +108,17 @@ In code, we will not have the luxury of accessing the rows and columns of Omega 
 
 ![](imgs/omega_xi_size3.png)
 
+#### How do we access rows and columns representing poses or landmarks in Omega?
+
+![](imgs/index_om_xi.png)
+
+Because we know that the number of timesteps equals the number of poses, and each pose or landmark has X and Y values, we can say that indexes that are less than twice the number of timesteps belong to poses. Then, indexes that are greater than or equal to twice the number of timesteps belong to landmarks. 
+
+We also agree that the pose for each timestep corresponds to two rows and two columns. Therefore, we can make these conclusions:
+
++ If we are given a pose for a given timestep `p`, then `2 * p` becomes the row/column INDEX of the X component of the pose, and `2 * p + 1` for the row/column INDEX of the Y component of the landmark.
+
++ If we are given a landmark with index `m` and the total number of timesteps is `n`, then `n + (2 * m)` becomes the row/column INDEX for the X component of the landmark, and `n + (2 * m) + 1` for the Y component of the landmark.
+
++ As illustrated in the diagrams above, the INDEXES of the rows and columns of for X values are even numbers, and those of Y are odd numbers. 
 
