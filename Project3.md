@@ -9,7 +9,7 @@ Poses and landmark locations are given as pairs of values, where the first value
 
 ## Sensing Landmarks
 
-A importance of the sense function is to allow the robot to measure its distance from landmarks. Among several reasons in the real world, this may help the robot prevent collision.
+The sense function allows the robot to measure its distance from landmarks. Among several reasons in the real world, this may help the robot prevent collision.
 Thus, for the purpose of the project, when a robot senses, it measures distances of landmarks. The horizontal distance is obtained by subtracting the horizontal coordinate of the robot's current position from the horizontal coordinate of the landmark position. And, the vertical 
 distance is obtained by subtracting the vertical coordinate of the robot's current position from the vertical coordinate of the landmark's position.
 
